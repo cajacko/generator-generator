@@ -1,0 +1,1 @@
+# Geneartor for Yeoman Generators
