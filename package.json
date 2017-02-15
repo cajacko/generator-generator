@@ -1,0 +1,21 @@
+{
+  "name": "generator-generator",
+  "version": "1.0.0",
+  "description": "Yeoman generator for creating yeoman generators",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "javascript",
+    "yeoman-generator"
+  ],
+  "author": "Charlie Jackson",
+  "license": "MIT",
+  "files": [
+    "app"
+  ],
+  "dependencies": {
+    "yeoman-generator": "1.1.0"
+  }
+}
