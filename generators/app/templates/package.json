@@ -1,0 +1,15 @@
+{
+  "name": "<%= packageTitle %>",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "<%= packageAuthor %>",
+  "license": "MIT",
+  "keywords": [
+    "javascript",
+    "yeoman-generator"
+  ],
+  "files": [
+    "app"
+  ]
+}
