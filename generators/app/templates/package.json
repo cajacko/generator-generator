@@ -11,5 +11,8 @@
   ],
   "files": [
     "app"
-  ]
+  ],
+  "dependencies": {
+    "yeoman-generator": "1.1.0"
+  }
 }

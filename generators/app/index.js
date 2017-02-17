@@ -1,20 +1,13 @@
-var Generator = require('yeoman-generator');
-var fs = require('fs');
-// var winston = require('winston');
-// winston.cli();
-// winston.level = 'debug';
+const Generator = require('yeoman-generator');
+const fs = require('fs');
 
 module.exports = class extends Generator {
-  constructor(args, opts) {
-    super(args, opts);
-  }
-
   prompting() {
     return this.prompt([{
-      type    : 'input',
-      name    : 'name',
-      message : 'Your generator name (must start with: generator-)',
-      default : 'generator-title'
+      type: 'input',
+      name: 'name',
+      message: 'Your generator name (must start with: generator-)',
+      default: 'generator-title'
     }]).then((answers) => {
       this.log('app name', answers.name);
       this.name = answers.name;
@@ -22,9 +15,8 @@ module.exports = class extends Generator {
   }
 
   initialiseGit() {
-    var path = this.destinationPath() + '/.git'
-
-    console.log(path);
+    const destinationPath = this.destinationPath();
+    const path = `${destinationPath}/.git`;
 
     if (!fs.existsSync(path)) {
       this.spawnCommandSync('git', ['init']);
