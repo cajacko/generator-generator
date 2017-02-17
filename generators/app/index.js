@@ -14,8 +14,7 @@ module.exports = class extends Generator {
       type    : 'input',
       name    : 'name',
       message : 'Your generator name (must start with: generator-)',
-      default : 'generator-title',
-      store   : true
+      default : 'generator-title'
     }]).then((answers) => {
       this.log('app name', answers.name);
       this.name = answers.name;
@@ -53,7 +52,7 @@ module.exports = class extends Generator {
   }
 
   installPackages() {
-    this.npmInstall(['yeoman-generator']});
+    this.npmInstall(['yeoman-generator']);
   }
 
   copyGenerators() {
@@ -73,6 +72,6 @@ module.exports = class extends Generator {
   end() {
     this.composeWith(require.resolve('generator-editor-config/generators/app'));
     this.composeWith(require.resolve('generator-eslint/generators/app'));
-    // this.composeWith(require.resolve('generator-gitignore/generators/app'));
+    this.composeWith(require.resolve('generator-gitignore/generators/app'));
   }
 };
