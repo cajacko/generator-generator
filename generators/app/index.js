@@ -1,27 +1,20 @@
 const Generator = require('yeoman-generator');
-const fs = require('fs');
 
 module.exports = class extends Generator {
   prompting() {
     return this.prompt([{
       type: 'input',
       name: 'name',
-      message: 'Your generator name (must start with: generator-)',
-      default: 'generator-title'
+      message: 'Your generator name (whatever you enter will be prepended with: generator-)',
+      default: 'title'
     }]).then((answers) => {
-      this.log('app name', answers.name);
-      this.name = answers.name;
+      const name = `generator-${answers.name}`;
+      this.name = name;
     });
   }
 
   initialiseGit() {
-    const destinationPath = this.destinationPath();
-    const path = `${destinationPath}/.git`;
-
-    if (!fs.existsSync(path)) {
-      this.spawnCommandSync('git', ['init']);
-      this.spawnCommandSync('git', ['flow', 'init', '-f', '-d']);
-    }
+    this.composeWith(require.resolve('generator-git/generators/app'));
   }
 
   addReadme() {
@@ -33,14 +26,11 @@ module.exports = class extends Generator {
   }
 
   setupPackageJson() {
-    this.fs.copyTpl(
-      this.templatePath('package.json'),
-      this.destinationPath('package.json'),
-      {
-        packageTitle: this.name,
-        packageAuthor: 'Charlie Jackson'
-      }
-    );
+    this.composeWith(require.resolve('generator-package-json/generators/app'), {
+      name: this.name,
+      keywords: 'javascript, yeoman-generator',
+      files: 'app'
+    });
   }
 
   installPackages() {
