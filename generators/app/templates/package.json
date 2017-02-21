@@ -10,7 +10,7 @@
     "yeoman-generator"
   ],
   "files": [
-    "app"
+    "generators"
   ],
   "dependencies": {
     "yeoman-generator": "1.1.0"
