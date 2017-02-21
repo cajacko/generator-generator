@@ -29,7 +29,7 @@ module.exports = class extends Generator {
     this.composeWith(require.resolve('generator-package-json/generators/app'), {
       name: this.name,
       keywords: 'javascript, yeoman-generator',
-      files: 'app'
+      files: 'generators'
     });
   }
 
