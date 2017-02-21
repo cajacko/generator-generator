@@ -14,7 +14,7 @@ module.exports = class extends Generator {
   }
 
   initialiseGit() {
-    this.composeWith(require.resolve('generator-git/generators/app'));
+    this.composeWith(require.resolve('generator-git-cj/generators/app'));
   }
 
   addReadme() {
@@ -53,7 +53,7 @@ module.exports = class extends Generator {
 
   end() {
     this.composeWith(require.resolve('generator-editor-config/generators/app'));
-    this.composeWith(require.resolve('generator-eslint/generators/app'));
-    this.composeWith(require.resolve('generator-gitignore/generators/app'));
+    this.composeWith(require.resolve('generator-eslint-cj/generators/app'));
+    this.composeWith(require.resolve('generator-gitignore-cj/generators/app'));
   }
 };
