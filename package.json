@@ -21,12 +21,12 @@
     "generator-editor-config": "1.0.1",
     "generator-eslint-cj": "1.0.1",
     "generator-git-cj": "1.0.1",
-    "generator-gitignore-cj": "1.0.1",
+    "generator-gitignore-cj": "1.0.2",
     "generator-package-json": "1.0.1",
     "yeoman-generator": "1.1.0"
   },
   "devDependencies": {
-    "eslint": "3.15.0",
+    "eslint": "3.16.1",
     "eslint-config-airbnb": "14.1.0",
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "4.0.0",
