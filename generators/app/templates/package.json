@@ -13,6 +13,7 @@
     "generators"
   ],
   "dependencies": {
-    "yeoman-generator": "1.1.0"
+    "yeoman-generator": "1.1.0",
+    "npm-check": "5.4.0"
   }
 }
