@@ -1,15 +1,52 @@
 const Generator = require('yeoman-generator');
+const npmCheck = require('npm-check');
+const path = require('path');
 
 module.exports = class extends Generator {
-  prompting() {
-    return this.prompt([{
-      type: 'input',
-      name: 'name',
-      message: 'Your generator name (whatever you enter will be prepended with: generator-)',
-      default: 'title'
-    }]).then((answers) => {
+  _generatorPrompts() {
+    return this.prompt([
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Your generator name (whatever you enter will be prepended with: generator-)',
+        default: 'title'
+      }
+    ]).then((answers) => {
       const name = `generator-${answers.name}`;
       this.name = name;
+    });
+  }
+
+  prompting() {
+    const cwd = path.join(__dirname, '../../');
+
+    return npmCheck({ cwd }).then((currentState) => {
+      const npmPackages = currentState.get('packages');
+      let needUpdating = false;
+
+      npmPackages.forEach((npmPackage) => {
+        if (npmPackage.latest !== npmPackage.installed) {
+          needUpdating = true;
+          this.log(`Package out of date: ${npmPackage.moduleName} ${npmPackage.installed} -> ${npmPackage.latest}`);
+        }
+      });
+
+      if (needUpdating) {
+        return this.prompt([{
+          type: 'confirm',
+          name: 'continue',
+          message: 'This generator has packages which are out of date, do you want to continue?',
+          default: false
+        }]).then((answers) => {
+          if (answers.continue) {
+            return this._generatorPrompts();
+          }
+
+          throw new Error('Packages are out of date, please update and commit them before continuing.');
+        });
+      }
+
+      return this._generatorPrompts();
     });
   }
 

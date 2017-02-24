@@ -23,6 +23,7 @@
     "generator-git-cj": "1.0.1",
     "generator-gitignore-cj": "1.0.2",
     "generator-package-json": "1.0.1",
+    "npm-check": "5.4.0",
     "yeoman-generator": "1.1.0"
   },
   "devDependencies": {
