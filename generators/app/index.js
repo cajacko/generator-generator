@@ -1,6 +1,7 @@
 const Generator = require('yeoman-generator');
 const npmCheck = require('npm-check');
 const path = require('path');
+const npmName = require('../../package.json').name;
 
 module.exports = class extends Generator {
   initializing() {
@@ -13,7 +14,7 @@ module.exports = class extends Generator {
       npmPackages.forEach((npmPackage) => {
         if (npmPackage.latest !== npmPackage.installed) {
           needUpdating = true;
-          this.log(`Package out of date: ${npmPackage.moduleName} ${npmPackage.installed} -> ${npmPackage.latest}`);
+          this.log(`${npmName} Package out of date: ${npmPackage.moduleName} ${npmPackage.installed} -> ${npmPackage.latest}`);
         }
       });
 
