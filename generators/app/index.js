@@ -3,21 +3,7 @@ const npmCheck = require('npm-check');
 const path = require('path');
 
 module.exports = class extends Generator {
-  _generatorPrompts() {
-    return this.prompt([
-      {
-        type: 'input',
-        name: 'name',
-        message: 'Your generator name (whatever you enter will be prepended with: generator-)',
-        default: 'title'
-      }
-    ]).then((answers) => {
-      const name = `generator-${answers.name}`;
-      this.name = name;
-    });
-  }
-
-  prompting() {
+  initializing() {
     const cwd = path.join(__dirname, '../../');
 
     return npmCheck({ cwd }).then((currentState) => {
@@ -39,14 +25,28 @@ module.exports = class extends Generator {
           default: false
         }]).then((answers) => {
           if (answers.continue) {
-            return this._generatorPrompts();
+            return true;
           }
 
           throw new Error('Packages are out of date, please update and commit them before continuing.');
         });
       }
 
-      return this._generatorPrompts();
+      return true;
+    });
+  }
+
+  prompting() {
+    return this.prompt([
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Your generator name (whatever you enter will be prepended with: generator-)',
+        default: 'title'
+      }
+    ]).then((answers) => {
+      const name = `generator-${answers.name}`;
+      this.name = name;
     });
   }
 
