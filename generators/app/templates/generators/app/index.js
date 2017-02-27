@@ -1,13 +1,12 @@
 const Generator = require('yeoman-generator');
 const npmCheck = require('npm-check');
 const path = require('path');
-const npmName = require('../../package.json').name;
 const checkOutOfDatePackages = require('check-out-of-date-packages');
 
 module.exports = class extends Generator {
   initializing() {
     const cwd = path.join(__dirname, '../../');
-    return checkOutOfDatePackages(cwd);
+    return checkOutOfDatePackages(cwd, 'Charlie Jackson');
   }
 
   writing() {

@@ -18,7 +18,7 @@
     "generators"
   ],
   "dependencies": {
-    "check-out-of-date-packages": "1.1.0",
+    "check-out-of-date-packages": "1.1.1",
     "generator-editor-config": "1.0.1",
     "generator-eslint-cj": "1.1.0",
     "generator-git-cj": "1.0.1",
