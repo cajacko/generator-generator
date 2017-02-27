@@ -1,5 +1,4 @@
 const Generator = require('yeoman-generator');
-const npmCheck = require('npm-check');
 const path = require('path');
 const checkOutOfDatePackages = require('check-out-of-date-packages');
 

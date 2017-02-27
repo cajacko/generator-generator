@@ -1,5 +1,4 @@
 const Generator = require('yeoman-generator');
-const npmCheck = require('npm-check');
 const path = require('path');
 const checkOutOfDatePackages = require('check-out-of-date-packages');
 
@@ -45,6 +44,8 @@ module.exports = class extends Generator {
 
   installPackages() {
     this.npmInstall(['yeoman-generator']);
+    this.npmInstall(['npm-check']);
+    this.npmInstall(['check-out-of-date-packages']);
   }
 
   copyGenerators() {
