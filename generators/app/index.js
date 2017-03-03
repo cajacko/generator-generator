@@ -43,9 +43,9 @@ module.exports = class extends Generator {
   }
 
   installPackages() {
-    this.npmInstall(['yeoman-generator']);
-    this.npmInstall(['npm-check']);
-    this.npmInstall(['check-out-of-date-packages']);
+    this.npmInstall(['yeoman-generator'], { save: true });
+    this.npmInstall(['npm-check'], { save: true });
+    this.npmInstall(['check-out-of-date-packages'], { save: true });
   }
 
   copyGenerators() {
