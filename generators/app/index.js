@@ -46,19 +46,20 @@ module.exports = class extends Generator {
     this.npmInstall(['yeoman-generator'], { save: true });
     this.npmInstall(['npm-check'], { save: true });
     this.npmInstall(['check-out-of-date-packages'], { save: true });
+    this.npmInstall(['generator-readme-cj'], { save: true });
   }
 
   copyGenerators() {
     this.fs.copyTpl(
       this.templatePath('generators/**/*'),
       this.destinationPath('generators'),
-      { title: 'Templating with Yeoman' }
+      { title: this.name }
     );
 
     this.fs.copyTpl(
       this.templatePath('generators/**/.*'),
       this.destinationPath('generators'),
-      { title: 'Templating with Yeoman' }
+      { title: this.name }
     );
   }
 

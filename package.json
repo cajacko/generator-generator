@@ -24,6 +24,7 @@
     "generator-git-cj": "*",
     "generator-gitignore-cj": "*",
     "generator-package-json": "*",
+    "generator-readme-cj": "*",
     "npm-check": "5.4.0",
     "yeoman-generator": "1.1.0"
   },

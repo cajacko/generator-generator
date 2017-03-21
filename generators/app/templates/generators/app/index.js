@@ -21,4 +21,11 @@ module.exports = class extends Generator {
       { variable: 'value' }
     );
   }
+
+  readme() {
+    this.composeWith(require.resolve('generator-readme-cj/generators/app'), {
+      tag: 'generator-<%= title %>',
+      markdown: this.fs.read(this.templatePath('README.md'))
+    });
+  }
 };
